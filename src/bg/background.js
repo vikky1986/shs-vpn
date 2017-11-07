@@ -12,14 +12,16 @@ chrome.pageAction.show(sender.tab.id);
 sendResponse();
 });*/
 
-var config = {
-  mode: "pac_script",
-  pacScript: {
-    data: String.raw`function FindProxyForURL(url, host) {
-  if (host === 'example.net')
-    return 'PROXY blackhole:80';
-  return 'HTTPS free-uk01.doublec1ick.com:11443';
-}`
-  }
-};
-chrome.proxy.settings.set({value: config, scope: 'regular'}, function() {});
+chrome.storage.sync.get("proxy", data => {
+  const proxy = data.proxy || "HTTPS a231d0484b9200cf.apache-iv.com:443; HTTPS 5cd6537ffd46bb09.apache-iv.com:443";
+  var config = {
+    mode: "pac_script",
+    pacScript: {
+      data: String.raw`function FindProxyForURL(url, host) {
+        return '` + proxy + String.raw`';
+      }`
+    }
+  };
+  chrome.proxy.settings.set({value: config, scope: 'regular'}, ()=>{});
+});
+alert("background");
