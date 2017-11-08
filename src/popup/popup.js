@@ -50,7 +50,6 @@ chrome.storage.sync.get(["proxy", "disabled"], data => {
 });
 
 reload.onclick = setProxy;
-};
 
 proxies.onchange = () => {
   chrome.storage.sync.set({proxy: proxies.value}, setProxy);
