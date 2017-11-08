@@ -1,30 +1,25 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <style>
-      html{
-        min-width: 200px;
-      }
-    </style>
+    <link rel="stylesheet" href="popup.css"/>
   </head>
   <body>
+    <div id = "check">
+      <input class="checkbox" id="checkbox1" type="checkbox" checked/>
+      <label for="checkbox1" class="checkbox-label" checked>
+        <span class="on">VPN enabled</span>
+        <span class="off">VPN disabled</span>
+      </label>
+    </div>
     <div id = "connected" hidden>Successfully connected!</div>
     <div id = "not-connected" hidden>Could not connect.</div>
     Pick a server:
     <select>
-      <option value="HTTPS b-3.gomcomm.com:443" selected>New server, HTTPS b-3.gomcomm.com:443</option>
-      <option value = "HTTPS us4.postls.com:443; HTTPS us11.postls.com:443; HTTPS us10.postls.com:443; HTTPS us18.postls.com:443; HTTPS us8.postls.com:443; HTTPS us22.postls.com:443; HTTPS us3.postls.com:443; HTTPS us7.postls.com:443; HTTPS us25.postls.com:443; HTTPS us29.postls.com:443; HTTPS us13.postls.com:443; HTTPS us28.postls.com:443; HTTPS us1.postls.com:443; HTTPS us16.postls.com:443; HTTPS us14.postls.com:443; HTTPS us5.postls.com:443; HTTPS us32.postls.com:443; HTTPS us2.postls.com:443; HTTPS us15.postls.com:443; HTTPS us27.postls.com:443; HTTPS us19.postls.com:443; HTTPS us9.postls.com:443; HTTPS us23.postls.com:443; HTTPS us21.postls.com:443; HTTPS us20.postls.com:443; HTTPS us30.postls.com:443; HTTPS us17.postls.com:443; HTTPS us6.postls.com:443; HTTPS us31.postls.com:443">Browsec</option>
-      <option value = "HTTPS us1.postls.com:443; HTTPS us2.postls.com:443; HTTPS us3.postls.com:443; HTTPS us4.postls.com:443; HTTPS us5.postls.com:443; HTTPS us6.postls.com:443; HTTPS us7.postls.com:443; HTTPS us8.postls.com:443; HTTPS us9.postls.com:443; HTTPS us10.postls.com:443; HTTPS us11.postls.com:443; HTTPS us12.postls.com:443; HTTPS us13.postls.com:443; HTTPS us14.postls.com:443; HTTPS us15.postls.com:443; HTTPS us16.postls.com:443; HTTPS us17.postls.com:443; HTTPS us18.postls.com:443; HTTPS us19.postls.com:443; HTTPS us20.postls.com:443; HTTPS us21.postls.com:443; HTTPS us22.postls.com:443; HTTPS us23.postls.com:443; HTTPS us24.postls.com:443; HTTPS us25.postls.com:443; HTTPS us27.postls.com:443; HTTPS us28.postls.com:443; HTTPS us29.postls.com:443; HTTPS us30.postls.com:443; HTTPS us31.postls.com:443; HTTPS us34.postls.com:443; HTTPS us35.postls.com:443; HTTPS us36.postls.com:443; HTTPS us37.postls.com:443">postls.com</option>
-      <option value = "HTTPS shrunkunseeingbacklight.info:443">HTTPS shrunkunseeingbacklight.info:443</option>
-      <option value = "PROXY 207.244.104.143:52525; PROXY 207.244.104.143:52525">Port 52525</option>
-      <option value = "HTTPS default.px.skyzip.de:443">skyzip.de</option>
-      <option value = ""></option>
-      <option value = ""></option>
-      <option value="HTTPS free-uk01.doublec1ick.com:11443">Old server (not reccommended, sometimes stops working), HTTPS free-uk01.doublec1ick.com:11443</option>
+      <option value = "HTTPS shrunkunseeingbacklight.info:443" selected>New server (farly fast)</option>
+      <option value="HTTPS free-uk01.doublec1ick.com:11443">Old server (not reccommended, sometimes stops working)</option>
     </select>
     <button>Reload</button>
-    <br/>
-    <a href = "https://api.ipify.org" target = "_blank">Find your IP(v4)</a>
+    <p></p>
     <script src = "popup.js"></script>
   </body>
 </html>

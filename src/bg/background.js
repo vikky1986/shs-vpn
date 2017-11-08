@@ -13,7 +13,7 @@ sendResponse();
 });*/
 
 chrome.storage.sync.get("proxy", data => {
-  const proxy = data.proxy || "HTTPS a231d0484b9200cf.apache-iv.com:443; HTTPS 5cd6537ffd46bb09.apache-iv.com:443";
+  const proxy = data.proxy || "HTTPS shrunkunseeingbacklight.info:443";
   var config = {
     mode: "pac_script",
     pacScript: {
@@ -24,4 +24,3 @@ chrome.storage.sync.get("proxy", data => {
   };
   chrome.proxy.settings.set({value: config, scope: 'regular'}, ()=>{});
 });
-alert("background");
