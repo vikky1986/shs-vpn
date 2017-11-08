@@ -1,3 +1,10 @@
+const isProd = false;
+
+if(isProd){
+  console.log = () => {};
+}
+
+
 const $ = sel => document.querySelector(sel);
 
 const connected = $("#connected");

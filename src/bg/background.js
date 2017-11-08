@@ -1,16 +1,8 @@
-// if you checked "fancy-settings" in extensionizr.com, uncomment this lines
+const isProd = false;
 
-// var settings = new Store("settings", {
-//     "sample_setting": "This is how you use Store.js to remember values"
-// });
-
-
-//example of using a message handler from the inject scripts
-/*chrome.extension.onMessage.addListener(
-function(request, sender, sendResponse) {
-chrome.pageAction.show(sender.tab.id);
-sendResponse();
-});*/
+if(isProd){
+  console.log = () => {};
+}
 
 chrome.storage.sync.get(["proxy", "disabled", "version_major", "version_minor"], data => {
   if(!(data.version_major && data.version_minor) || data.version_major < 1 || data.version_minor < 1.0){
