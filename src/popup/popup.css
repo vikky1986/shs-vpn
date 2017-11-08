@@ -18,6 +18,15 @@ html{
   animation: 1s ease-out 0s 1 fadeIn;
 }
 
+input, button, select, html{
+  font-family: "Open Sans";
+  font-size: inherit;
+}
+
+html{
+  font-size: 1.3em;
+}
+
 button{
   background: white;
   border: 2px solid #fecd0f;
@@ -26,6 +35,10 @@ button{
   width: 100px;
   margin: 5px auto;
   display: block;
+}
+
+#check{
+  font-size: 1.5em;
 }
 
 #check *, #check *:before, #check *:after {

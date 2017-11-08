@@ -16,6 +16,7 @@ const checkbox = $("input");
 const section = $("section");
 
 const calc = () => {
+  info.innerText = "Loading...";
   chrome.proxy.settings.get({}, settings => {
     if(settings.levelOfControl === "controlled_by_this_extension" && settings.value.mode === "pac_script"){
       connected.hidden = false;
@@ -26,7 +27,7 @@ const calc = () => {
     }
     fetch("http://ip-api.com/json").then(x=>x.json()).then(data => {
       info.innerText = `Your IPv4: ${data.query}
-You're in ${data.city}, ${data.regionName}, ${data.country} & your ISP is ${data.isp}`;
+You're in ${data.city}, ${data.regionName}, ${data.country} & your ISP is ${data.isp}.`;
     });
   });
 };

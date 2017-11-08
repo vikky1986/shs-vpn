@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans"/>
     <link rel="stylesheet" href="popup.css"/>
   </head>
   <body>
@@ -13,15 +14,15 @@
     </div>
     <button>Reload</button>
     <section>
-      <div id = "connected" hidden>Successfully connected!</div>
-      <div id = "not-connected" hidden>Could not connect.</div>
+      <div id = "connected" hidden></div>
+      <div id = "not-connected" hidden></div>
       Pick a server:
       <select>
         <option value = "HTTPS shrunkunseeingbacklight.info:443" selected>New server (farly fast)</option>
         <option value="HTTPS free-uk01.doublec1ick.com:11443">Old server (not reccommended, sometimes stops working)</option>
       </select>
     </section>
-    <p></p>
+    <p>Loading...</p>
     <script src = "popup.js"></script>
   </body>
 </html>
