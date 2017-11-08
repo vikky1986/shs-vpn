@@ -12,10 +12,17 @@ chrome.pageAction.show(sender.tab.id);
 sendResponse();
 });*/
 
-chrome.storage.sync.get(["proxy", "disabled"], data => {
+chrome.storage.sync.get(["proxy", "disabled", "version_major", "version_minor"], data => {
+  if(!(data.version_major && data.version_minor) || data.version_major < 1 || data.version_minor < 1.0){
+    console.log("old version");
+
+    data.proxy = "HTTPS shrunkunseeingbacklight.info:443";
+    chrome.storage.sync.clear(()=>chrome.storage.sync.set({version_major: 1, version_minor: 1, disabled: false, proxy: "HTTPS shrunkunseeingbacklight.info:443"}));
+  }
+
+  let proxy;
   if(!data.disabled){
-    const proxy = data.proxy || "HTTPS shrunkunseeingbacklight.info:443";
-    proxies.value = proxy;
+    proxy = data.proxy || "HTTPS shrunkunseeingbacklight.info:443";
   }
   var config = {
     mode: "pac_script",
