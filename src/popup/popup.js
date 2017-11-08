@@ -27,7 +27,7 @@ const calc = () => {
     }
     fetch("http://ip-api.com/json").then(x=>x.json()).then(data => {
       info.innerText = `Your IPv4 is ${data.query}, you're in ${data.city}, ${data.regionName}, ${data.country} and your ISP is ${data.isp}.`;
-    });
+    }).catch(console.error);
   });
 };
 
