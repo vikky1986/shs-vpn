@@ -26,8 +26,7 @@ const calc = () => {
       notConnected.hidden = true;
     }
     fetch("http://ip-api.com/json").then(x=>x.json()).then(data => {
-      info.innerText = `Your IPv4: ${data.query}
-You're in ${data.city}, ${data.regionName}, ${data.country} & your ISP is ${data.isp}.`;
+      info.innerText = `Your IPv4 is ${data.query}, you're in ${data.city}, ${data.regionName}, ${data.country} and your ISP is ${data.isp}.`;
     });
   });
 };
