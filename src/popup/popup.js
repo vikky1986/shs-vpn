@@ -5,6 +5,7 @@ const notConnected = $("#not-connected");
 const reload = $("button");
 const proxies = $("select");
 const info = $("p");
+const checkbox = $("input");
 
 const calc = () => {
 
@@ -24,14 +25,18 @@ You're in ${data.city}, ${data.regionName}, ${data.country} & your ISP is ${data
 };
 
 reload.onclick = () => {
-  chrome.storage.sync.get("proxy", data => {
-    const proxy = data.proxy || proxies.children[0].value;
-    proxies.value = proxy;
+  chrome.storage.sync.get(["proxy", "disabled"], data => {
+    checkbox.checked = !data.disabled;
+    let proxy;
+    if(!data.disabled){
+      proxy = data.proxy || proxies.children[0].value;
+      proxies.value = proxy;
+    }
     var config = {
       mode: "pac_script",
       pacScript: {
         data: String.raw`function FindProxyForURL(url, host) {
-          return '` + proxy + String.raw`';
+          return '` + (data.disabled ? "DIRECT" : proxy) + String.raw`';
         }`
       }
     };
@@ -44,3 +49,7 @@ proxies.onchange = () => {
 };
 
 reload.onclick();
+
+checkbox.onchange = () => {
+  chrome.storage.sync.set({disabled: !checkbox.checked}, ()=>reload.onclick());
+};

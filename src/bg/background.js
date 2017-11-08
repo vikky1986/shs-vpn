@@ -12,15 +12,18 @@ chrome.pageAction.show(sender.tab.id);
 sendResponse();
 });*/
 
-chrome.storage.sync.get("proxy", data => {
-  const proxy = data.proxy || "HTTPS shrunkunseeingbacklight.info:443";
+chrome.storage.sync.get(["proxy", "disabled"], data => {
+  if(!data.disabled){
+    const proxy = data.proxy || "HTTPS shrunkunseeingbacklight.info:443";
+    proxies.value = proxy;
+  }
   var config = {
     mode: "pac_script",
     pacScript: {
       data: String.raw`function FindProxyForURL(url, host) {
-        return '` + proxy + String.raw`';
+        return '` + (data.disabled ? "DIRECT" : proxy) + String.raw`';
       }`
     }
   };
-  chrome.proxy.settings.set({value: config, scope: 'regular'}, ()=>{});
+  chrome.proxy.settings.set({value: config, scope: 'regular'}, ( )=>{});
 });
