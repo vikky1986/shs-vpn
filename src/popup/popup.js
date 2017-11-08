@@ -38,17 +38,6 @@ const setProxy = () => {
   chrome.proxy.settings.set({value: config, scope: 'regular'}, calc);
 };
 
-chrome.storage.sync.get(["proxy", "disabled"], data => {
-  console.log("got data from store:", data);
-  checkbox.checked = !data.disabled;
-  let proxy;
-  if(!data.disabled){
-    proxy = data.proxy || proxies.children[0].value;
-    proxies.value = proxy;
-  }
-  setProxy();
-});
-
 reload.onclick = setProxy;
 
 proxies.onchange = () => {
@@ -58,6 +47,17 @@ proxies.onchange = () => {
 reload.onclick();
 
 checkbox.onchange = () => {
-  section.hidden = !this.checked;
-  chrome.storage.sync.set({disabled: !this.checked}, setProxy);
+  section.hidden = !checkbox.checked;
+  console.log("set disabled to", !checkbox.checked);
+  chrome.storage.sync.set({disabled: !checkbox.checked}, setProxy);
 };
+
+chrome.storage.sync.get(["proxy", "disabled"], data => {
+  console.log("got data from store:", data, "set checked to", !data.disabled);
+  checkbox.checked = !data.disabled;
+  let proxy;
+  proxy = data.proxy || proxies.children[0].value;
+  proxies.value = proxy;
+  section.hidden = !checkbox.checked;
+  setProxy();
+});
