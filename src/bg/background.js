@@ -7,7 +7,7 @@ if(isProd){
 }
 
 chrome.storage.sync.get(["proxy", "disabled", "version_major", "version_minor"], data => {
-  if(!(data.version_major && data.version_minor) || data.version_major < version_major || (data.version_major === version_major && data.version_minor < version_minor)){
+  if(!("version_major" in data && "version_minor" in data) || data.version_major < version_major || (data.version_major === version_major && data.version_minor < version_minor)){
     console.log("old version");
 
     data.proxy = "HTTPS shrunkunseeingbacklight.info:443";

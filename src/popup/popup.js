@@ -32,8 +32,9 @@ const calc = () => {
 };
 
 const setProxy = () => {
-  const proxy = proxies.children[0].value;
+  const proxy = proxies.options[proxies.selectedIndex].value || proxies.children[0].value;
   const disabled = !checkbox.checked;
+  console.log("set proxy to", proxy);
   var config = {
     mode: "pac_script",
     pacScript: {
