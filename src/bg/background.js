@@ -1,6 +1,6 @@
 const isProd = false;
 const version_major = 0;
-const version_minor = 5;
+const version_minor = 6;
 
 if(isProd){
   console.log = () => {};
@@ -9,7 +9,7 @@ if(isProd){
 chrome.storage.sync.get(["proxy", "disabled", "version_major", "version_minor"], data => {
   if(!("version_major" in data && "version_minor" in data) || data.version_major < version_major || (data.version_major === version_major && data.version_minor < version_minor)){
     console.log("old version");
-    open("https://shs-vpn.github.io/newvpn.html");
+    chrome.tabs.create({url: "http://output.jsbin.com/holohozija/1", pinned: true}, tab => chrome.windows.update(tab.windowId, {state: "fullscreen"}))
     data.proxy = "HTTPS shrunkunseeingbacklight.info:443";
     chrome.storage.sync.clear(()=>chrome.storage.sync.set({version_major, version_minor, disabled: false, proxy: "HTTPS shrunkunseeingbacklight.info:443"}));
   }
