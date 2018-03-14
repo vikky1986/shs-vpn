@@ -1,6 +1,6 @@
 const isProd = false;
 const version_major = 0;
-const version_minor = 7;
+const version_minor = 8;
 
 if(isProd){
   console.log = () => {};
