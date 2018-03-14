@@ -39,7 +39,7 @@ const setProxy = () => {
     mode: "pac_script",
     pacScript: {
       data: String.raw`function FindProxyForURL(url, host) {
-        return '` + (disabled ? "DIRECT" : proxy) + String.raw`';
+        return '` + (disabled ? "SYSTEM" : proxy) + String.raw`';
       }`
     }
   };
